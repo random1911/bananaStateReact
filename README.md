@@ -1,13 +1,13 @@
 # This is a third try to make a board game. Now with react!
 
-###Done:
+##Done:
 
 * map generation
 * turn cycle
 * game log
 * basic movement
 
-###TODO:
+##TODO:
 
 * advanced movement
 * basic modal window realization (portals)
@@ -21,7 +21,7 @@
 * player stats (rounds on map, karma, money earned/spent etc)
 * init game screen with settings and quick start feature
 
-###Future milestones:
+##Future milestones:
 
 * win conditions
 * game rules and help
