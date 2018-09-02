@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {observer} from 'mobx-react'
 import {
   Container,
   Header,
@@ -10,7 +11,6 @@ import {
   PlayerRest,
   PlayerButtons,
 } from './PlayerSummaryStyled'
-
 
 const PlayerSummary = props => {
   const {color, name, formattedBalance, isFrozen, frozenStatus, frozenTurnsCount} = props.player
@@ -41,4 +41,4 @@ PlayerSummary.propTypes = {
   player: PropTypes.object.isRequired,
 }
 
-export default PlayerSummary
+export default observer(PlayerSummary)

@@ -65,11 +65,16 @@ const mapSnap = {
     },
     {
       id: 3,
-      caption: '',
-      description: '',
+      caption: 'Police',
+      description: 'You got arrested for 2 turns',
       position: {x: 1, y: 3},
       prev: [{x: 1, y: 2}],
       next: [{x: 2, y: 3}],
+      event: {
+        type: 'freeze',
+        value: 2,
+        text: 'Jailed'
+      }
     },
     {
       id: 4,
@@ -89,11 +94,16 @@ const mapSnap = {
     },
     {
       id: 6,
-      caption: '',
-      description: '',
+      caption: 'Trauma',
+      description: 'Ouch! You have broke your leg',
       position: {x: 4, y: 3},
       prev: [{x: 3, y: 3}],
       next: [{x: 4, y: 2}],
+      event: {
+        type: 'freeze',
+        value: 2,
+        text: 'Broke leg'
+      }
     },
     {
       id: 7,

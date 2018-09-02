@@ -1,5 +1,4 @@
 import { types } from "mobx-state-tree";
-import {generateDate} from "../helpers/helpers"
 import player from "./player";
 import smallProperty from "./smallProperty";
 import GameMap from "./map";
@@ -65,13 +64,10 @@ const actions = self => ({
   },
   makeRoll() {
     const res = self.getRollResult();
-    const turn = self.currentTurn
     const message = {
-      turn,
       playerColor: self.activePlayerColor,
       caption: self.activePlayer.name,
       message: `has rolled ${res}`,
-      id: `${generateDate()}${turn}${res}`
     };
     self.log.addMessage(message);
     self.activePlayer.move(res);

@@ -1,5 +1,4 @@
 import {types, getRoot} from 'mobx-state-tree'
-import {generateDate} from "../helpers/helpers"
 import {availableColors} from './colors'
 import smallProperty from './smallProperty'
 import {coordinates} from './map'
@@ -28,28 +27,52 @@ const playerViews = self => ({
 const playerActions = self => ({
   checkFrozen() {
     const message = {
-      id: `${generateDate()}${self.color}`,
       turn: self.store.currentTurn,
       playerColor: self.color,
       caption: self.name,
     }
-    if (self.frozenTurnsCount <= 0 || self.isFrozen) {
+    if (self.frozenTurnsCount <= 0 || !self.isFrozen) {
       self.isFrozen = false
       message.message = 'is no longer inactive'
       self.frozenStatus = ''
     } else {
       self.frozenTurnsCount -= 1
-      message.message = `will be inactive ${self.frozenTurnsCount} more turns`
+      message.message = self.frozenTurnsCount === 0 ? 'will be active next turn' : `will be inactive ${self.frozenTurnsCount} more turns`
     }
     self.store.log.addMessage(message)
-    self.endTurn()
+    self.store.endTurn()
+  },
+  freeze(duration = 1, reason) {
+    if(duration <= 1) return
+    self.isFrozen = true
+    self.frozenTurnsCount = duration
+    if(reason) {
+      self.frozenStatus = reason
+    }
+    const turn = self.store.currentTurn
+    const message = {
+      turn,
+      playerColor: self.color,
+      caption: self.name,
+      message: `become inactive for ${duration} turns${reason ? ` because of ${reason}` : '.'}`,
+    }
+    self.store.log.addMessage(message);
   },
   setNewPosition(x, y) {
     self.position.x = x
     self.position.y = y
   },
-  move(number) {
+  onStartMoving() {
     self.store.setPlayerMoving(true)
+  },
+  onEndMoving() {
+    self.store.setPlayerMoving(false)
+    const currentTile = self.store.gameMap.getTile(self.position)
+    console.log('tile ID: ', currentTile.id)
+    currentTile.event && currentTile.event.check()
+  },
+  move(number) {
+    self.onStartMoving()
     const getNextTiles = currentTile => self.store.gameMap.getTile(currentTile).next
     let currentPos = self.position
     let path = [currentPos]
@@ -66,7 +89,9 @@ const playerActions = self => ({
     path.forEach((item, index) => {
       setTimeout(() => {
         self.setNewPosition(item.x, item.y)
-        index + 1 === path.length && self.store.setPlayerMoving(false)
+        if(index + 1 === path.length) {
+          self.onEndMoving()
+        }
       }, delay * index)
     })
   },

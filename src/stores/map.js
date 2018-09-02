@@ -1,4 +1,5 @@
 import {types, getRoot} from 'mobx-state-tree'
+import event from './event'
 
 /*
 События клетки
@@ -25,6 +26,7 @@ const tile = types
     position: coordinates,
     next: types.array(coordinates),
     prev: types.array(coordinates),
+    event: types.maybe(event),
   })
   .views(self => ({
     get store() {

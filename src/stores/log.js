@@ -1,7 +1,7 @@
 import {types, getRoot} from 'mobx-state-tree'
 
 const logMessage = types.model('LogMessage', {
-  id: types.identifier,
+  id: types.identifierNumber,
   turn: types.number,
   playerColor: types.maybe(types.string),
   caption: types.maybe(types.string),
@@ -19,9 +19,17 @@ const log = types
     },
   }))
   .actions(self => ({
-    addMessage(mesage) {
-      self.messages = [...self.messages, mesage]
-    }
+    addMessage(message) {
+      message.id = self.messages.length + 1
+      message.turn = self.store.currentTurn
+      self.messages = [...self.messages, message]
+    },
+    addToLast(text) {
+      if (!self.messages.length) return
+      const lastMessage = self.messages[self.messages.length - 1]
+      const current = lastMessage.message
+      lastMessage.message = current + text
+    },
   }))
 
 export default log
