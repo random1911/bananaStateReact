@@ -27,7 +27,6 @@ const playerViews = self => ({
 const playerActions = self => ({
   checkFrozen() {
     const message = {
-      turn: self.store.currentTurn,
       playerColor: self.color,
       caption: self.name,
     }
@@ -35,10 +34,11 @@ const playerActions = self => ({
       self.isFrozen = false
       message.message = 'is no longer inactive'
       self.frozenStatus = ''
-    } else {
-      self.frozenTurnsCount -= 1
-      message.message = self.frozenTurnsCount === 0 ? 'will be active next turn' : `will be inactive ${self.frozenTurnsCount} more turns`
+      self.store.log.addMessage(message)
+      return
     }
+    self.frozenTurnsCount -= 1
+    message.message = self.frozenTurnsCount === 0 ? 'will be active next turn' : `will be inactive ${self.frozenTurnsCount} more turns`
     self.store.log.addMessage(message)
     self.store.endTurn()
   },
@@ -49,9 +49,7 @@ const playerActions = self => ({
     if(reason) {
       self.frozenStatus = reason
     }
-    const turn = self.store.currentTurn
     const message = {
-      turn,
       playerColor: self.color,
       caption: self.name,
       message: `become inactive for ${duration} turns${reason ? ` because of ${reason}` : '.'}`,
@@ -68,7 +66,7 @@ const playerActions = self => ({
   onEndMoving() {
     self.store.setPlayerMoving(false)
     const currentTile = self.store.gameMap.getTile(self.position)
-    console.log('tile ID: ', currentTile.id)
+    self.store.log.addToLast(` and went to tile ${currentTile.id} ${currentTile.caption}`)
     currentTile.event && currentTile.event.check()
   },
   move(number) {
