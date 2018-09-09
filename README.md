@@ -6,20 +6,22 @@
 * turn cycle
 * game log
 * basic movement
+* freeze mechanic
+* detect new circle on map (to get profit, etc)
+* player stats (rounds on map, karma, money earned/spent etc)
 
 ##TODO:
 
+* Costa De Banana flag to get favicon, app icons and some style (colors)
 * advanced movement
 * basic modal window realization (portals)
-* detect new circle on map (to get profit, etc)
-* freeze mechanic
 * tile events
 * buy small property
 * stock property and stocks mechanics
 * stocks UI view
-* player status (adventurer, businessman, mafioso and ect)
-* player stats (rounds on map, karma, money earned/spent etc)
+* player status (adventurer, businessman, mafioso and etc)
 * init game screen with settings and quick start feature
+* lots, lots of UI!
 
 ##Future milestones:
 

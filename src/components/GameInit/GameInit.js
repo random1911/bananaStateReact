@@ -5,19 +5,23 @@ import {
   Wrapper,
 } from "./GameInitStyled"
 
-const playersSnap = [
-  {
-    color: 'red',
-    id: 'red',
-    name: 'John',
+function createPlayer(color, name) {
+  return {
+    color,
+    name,
+    id: color,
     balance: 10000,
-  },
-  {
-    color: 'blue',
-    id: 'blue',
-    name: 'Paul',
-    balance: 10000,
+    stats: {
+      rounds: 0,
+      moneySpent: 0,
+      moneyEarned: 0
+    }
   }
+}
+
+const playersSnap = [
+  createPlayer('red', 'John'),
+  createPlayer('blue', 'Pablo')
 ]
 
 /*
@@ -44,6 +48,7 @@ id: types.number,
 * */
 
 const mapSnap = {
+  start: {x: 1, y: 1},
   tiles: [
     {
       id: 1,
