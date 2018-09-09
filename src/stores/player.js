@@ -2,7 +2,7 @@ import { types, getRoot } from "mobx-state-tree";
 import { availableColors } from "./colors";
 import smallProperty from "./smallProperty";
 import { coordinates } from "./map";
-import stats from './playerStats'
+import stats from "./playerStats";
 
 const player = types
   .model("playerModel", {
@@ -15,7 +15,7 @@ const player = types
     isFrozen: false,
     frozenStatus: types.maybe(types.string),
     frozenTurnsCount: types.optional(types.number, 0),
-    stats: stats,
+    stats: stats
   })
   .views(self => ({
     get store() {
@@ -100,13 +100,37 @@ const player = types
         setTimeout(() => {
           self.setNewPosition(item.x, item.y);
           if (index > 0 && self.store.gameMap.checkOnStart(item)) {
-            self.onNewRound()
+            self.onNewRound();
           }
           if (index + 1 === path.length) {
             self.onEndMoving();
           }
         }, delay * index);
       });
+    },
+    changeBalance(number) {
+      self.balance += number;
+      number >= 0
+        ? self.stats.addMoneyEarned(number)
+        : self.stats.addMoneySpent(number);
+    },
+    getMoney(number, reason) {
+      const message = {
+        playerColor: self.color,
+        caption: self.name,
+        message: `got $${number} in the reason of ${reason}`
+      };
+      self.store.log.addMessage(message);
+      self.changeBalance(number);
+    },
+    looseMoney(number, reason) {
+      const message = {
+        playerColor: self.color,
+        caption: self.name,
+        message: `lost $${number} in the reason of ${reason}`
+      };
+      self.store.log.addMessage(message);
+      self.changeBalance(number);
     }
   }));
 

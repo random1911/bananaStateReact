@@ -12,6 +12,7 @@
 
 ##TODO:
 
+* simplify addMessage in log
 * Costa De Banana flag to get favicon, app icons and some style (colors)
 * advanced movement
 * basic modal window realization (portals)

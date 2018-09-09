@@ -83,11 +83,16 @@ const mapSnap = {
     },
     {
       id: 4,
-      caption: '',
+      caption: 'Lucky lottery',
       description: '',
       position: {x: 2, y: 3},
       prev: [{x: 1, y: 3}],
       next: [{x: 3, y: 3}],
+      event: {
+        type: 'getMoney',
+        value: 2000,
+        text: 'won a lottery'
+      }
     },
     {
       id: 5,
@@ -128,11 +133,16 @@ const mapSnap = {
     },
     {
       id: 9,
-      caption: '',
+      caption: 'It\'s a robbery!',
       description: '',
       position: {x: 3, y: 1},
       prev: [{x: 4, y: 1}],
       next: [{x: 2, y: 1}],
+      event: {
+        type: 'looseMoney',
+        value: 1000,
+        text: 'robbery'
+      }
     },
     {
       id: 10,
