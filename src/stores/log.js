@@ -20,10 +20,14 @@ const log = types
   }))
   .actions(self => ({
     addMessage(message) {
-      // TODO: refact this!!!!
-      message.id = self.messages.length + 1;
-      message.turn = self.store.currentTurn;
-      self.messages = [...self.messages, message];
+      const newMessage = {
+        id: self.messages.length + 1,
+        turn: self.store.currentTurn,
+        playerColor: self.store.activePlayer.color,
+        caption: self.store.activePlayer.name,
+        message
+      };
+      self.messages = [...self.messages, newMessage];
     },
     addToLast(text) {
       if (!self.messages.length) return;

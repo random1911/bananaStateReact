@@ -27,19 +27,15 @@ const player = types
   }))
   .actions(self => ({
     checkFrozen() {
-      const message = {
-        playerColor: self.color,
-        caption: self.name
-      };
       if (self.frozenTurnsCount <= 0 || !self.isFrozen) {
         self.isFrozen = false;
-        message.message = "is no longer inactive";
+        const message = "is no longer inactive";
         self.frozenStatus = "";
         self.store.log.addMessage(message);
         return;
       }
       self.frozenTurnsCount -= 1;
-      message.message =
+      const message =
         self.frozenTurnsCount === 0
           ? "will be active next turn"
           : `will be inactive ${self.frozenTurnsCount} more turns`;
@@ -53,13 +49,9 @@ const player = types
       if (reason) {
         self.frozenStatus = reason;
       }
-      const message = {
-        playerColor: self.color,
-        caption: self.name,
-        message: `become inactive for ${duration} turns${
+      const message =  `become inactive for ${duration} turns${
           reason ? ` because of ${reason}` : "."
-        }`
-      };
+        }`;
       self.store.log.addMessage(message);
     },
     setNewPosition(x, y) {
@@ -115,22 +107,14 @@ const player = types
         : self.stats.addMoneySpent(number);
     },
     getMoney(number, reason) {
-      const message = {
-        playerColor: self.color,
-        caption: self.name,
-        message: `got $${number} in the reason of ${reason}`
-      };
+      const message = `got $${number} in the reason of ${reason}`;
       self.store.log.addMessage(message);
       self.changeBalance(number);
     },
     looseMoney(number, reason) {
-      const message = {
-        playerColor: self.color,
-        caption: self.name,
-        message: `lost $${number} in the reason of ${reason}`
-      };
+      const message = `lost $${number} in the reason of ${reason}`;
       self.store.log.addMessage(message);
-      self.changeBalance(number);
+      self.changeBalance(-number);
     }
   }));
 

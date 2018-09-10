@@ -139,7 +139,7 @@ const mapSnap = {
       prev: [{x: 4, y: 1}],
       next: [{x: 2, y: 1}],
       event: {
-        type: 'looseMoney',
+        type: 'lostMoney',
         value: 1000,
         text: 'robbery'
       }

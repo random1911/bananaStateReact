@@ -64,11 +64,7 @@ const actions = self => ({
   },
   makeRoll() {
     const res = self.getRollResult();
-    const message = {
-      playerColor: self.activePlayerColor,
-      caption: self.activePlayer.name,
-      message: `has rolled ${res}`,
-    };
+    const message = `has rolled ${res}`;
     self.log.addMessage(message);
     self.activePlayer.move(res);
     self.setRollStatus(true)
