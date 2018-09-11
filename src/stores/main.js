@@ -37,9 +37,10 @@ const actions = self => ({
       window.store = self;
     }
   },
-  initGame(players, map) {
+  initGame({players, map, smallProperty}) {
     self.players = players;
     self.gameMap = map;
+    self.smallProperty = smallProperty
     self.currentTurn = 1;
     self.isRunning = true;
     self.gameMap.calculateSizes();
@@ -80,6 +81,9 @@ const actions = self => ({
     }
     self.setRollStatus(false)
   },
+  findSmallProperty(id) {
+    return self.smallProperty.find(property => property.id === id)
+  }
 });
 
 const Store = types

@@ -13,7 +13,7 @@ import {
 } from './PlayerSummaryStyled'
 
 const PlayerSummary = props => {
-  const {color, name, formattedBalance, isFrozen, frozenStatus, frozenTurnsCount} = props.player
+  const {color, name, formattedIncome, formattedBalance, isFrozen, frozenStatus, frozenTurnsCount} = props.player
   return (
     <Container>
       <Header color={color}>
@@ -25,7 +25,7 @@ const PlayerSummary = props => {
       </Header>
       <PlayerRest>
         <div>Balance: ${formattedBalance}</div>
-        <div>Income: TODO</div>
+        <div>Income: ${formattedIncome}</div>
         <div>Frozen: {isFrozen ? 'yes' : 'no'}</div>
         <div>{frozenStatus}, frozen for {frozenTurnsCount} turns</div>
       </PlayerRest>

@@ -25,6 +25,10 @@ const event = types
         case "lostMoney":
           player.looseMoney(self.value, self.text);
           break;
+        case "buySmallProperty":
+          //TODO!
+          console.log('Do manual action button!');
+          break;
         default:
           return;
       }

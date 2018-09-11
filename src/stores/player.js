@@ -1,6 +1,6 @@
 import { types, getRoot } from "mobx-state-tree";
 import { availableColors } from "./colors";
-import smallProperty from "./smallProperty";
+// import smallProperty from "./smallProperty";
 import { coordinates } from "./map";
 import stats from "./playerStats";
 
@@ -11,7 +11,7 @@ const player = types
     position: types.optional(coordinates, { x: 1, y: 1 }),
     name: types.string,
     balance: types.number,
-    smallPropertyList: types.optional(types.array(smallProperty), []),
+    // smallPropertyList: types.optional(types.array(smallProperty), []),
     isFrozen: false,
     frozenStatus: types.maybe(types.string),
     frozenTurnsCount: types.optional(types.number, 0),
@@ -23,6 +23,19 @@ const player = types
     },
     get formattedBalance() {
       return self.balance.toLocaleString();
+    },
+    get smallProperty() {
+      return self.store.smallProperty.filter(property => property.ownerId === self.id)
+    },
+    get income() {
+      if (!self.smallProperty.length) return 0;
+      const income = self.smallProperty.reduce((accumulator, currentValue) => {
+        return accumulator + currentValue.income;
+      }, 0);
+      return income
+    },
+    get formattedIncome() {
+      return self.income.toLocaleString();
     }
   }))
   .actions(self => ({
