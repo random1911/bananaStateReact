@@ -13,6 +13,7 @@
 ##TODO:
 
 * manual acton button (for buy something for example)
+* getter for check is manual action is available
 * Costa De Banana flag to get favicon, app icons and some style (colors)
 * advanced movement
 * basic modal window realization (portals)

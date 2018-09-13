@@ -14,11 +14,19 @@ export default {
     },
     {
       id: 2,
-      caption: "",
-      description: "",
+      caption: "\"Erudito\" bookstore",
+      description: "Price - $5000, income = $1500",
       position: { x: 1, y: 2 },
       prev: [{ x: 1, y: 1 }],
-      next: [{ x: 1, y: 3 }]
+      next: [{ x: 1, y: 3 }],
+      event: {
+        type: "manual",
+        manualAction: {
+          type: "buySmallProperty",
+          reference: "erudito",
+          caption: "Buy \"Erudito\""
+        }
+      }
     },
     {
       id: 3,

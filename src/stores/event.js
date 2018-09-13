@@ -1,11 +1,12 @@
 import { types, getRoot } from "mobx-state-tree";
+import manualAction from "./manualAction"
 
 const event = types
   .model("Event", {
     type: types.string,
-    manual: false,
     value: types.maybe(types.number),
-    text: types.maybe(types.string)
+    text: types.maybe(types.string),
+    manualAction: types.maybe(manualAction)
   })
   .views(self => ({
     get store() {
@@ -25,9 +26,8 @@ const event = types
         case "lostMoney":
           player.looseMoney(self.value, self.text);
           break;
-        case "buySmallProperty":
-          //TODO!
-          console.log('Do manual action button!');
+        case "manual":
+          self.store.setManualAction(self.manualAction);
           break;
         default:
           return;
