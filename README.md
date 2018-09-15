@@ -9,12 +9,12 @@
 * freeze mechanic
 * detect new circle on map (to get profit, etc)
 * player stats (rounds on map, karma, money earned/spent etc)
+* Costa De Banana flag to get favicon, app icons and some style (colors)
 
 ##TODO:
 
 * manual acton button (for buy something for example)
 * getter for check is manual action is available
-* Costa De Banana flag to get favicon, app icons and some style (colors)
 * advanced movement
 * basic modal window realization (portals)
 * tile events

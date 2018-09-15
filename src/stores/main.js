@@ -4,6 +4,7 @@ import smallProperty from "./smallProperty";
 import GameMap from "./map";
 import Log from "./log";
 import manualAction, {emptyManualAction} from "./manualAction";
+import rules from "./rules"
 
 const model = {
   isRunning: false,
@@ -15,7 +16,8 @@ const model = {
   gameMap: types.maybe(GameMap),
   manualAction: types.optional(manualAction, emptyManualAction),
   playerMoving: false,
-  log: types.optional(Log, { messages: [] })
+  log: types.optional(Log, { messages: [] }),
+  rules: types.optional(rules, {}),
 };
 
 const views = self => ({

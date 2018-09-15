@@ -36,6 +36,12 @@ const player = types
     },
     get formattedIncome() {
       return self.income.toLocaleString();
+    },
+    get hasIncome() {
+      return self.income > 0
+    },
+    get isNeedy() {
+      return self.income <= self.store.rules.povertyLine
     }
   }))
   .actions(self => ({
@@ -84,6 +90,7 @@ const player = types
     },
     onNewRound() {
       self.stats.increaseRoundsCount();
+      self.getIncome();
     },
     move(number) {
       self.onStartMoving();
@@ -120,6 +127,8 @@ const player = types
         : self.stats.addMoneySpent(number);
     },
     getMoney(number, reason) {
+      // TODO: use add to last on events and short message here.
+      // 'got $${number}' here, '. He was lucky at lottery' on event
       const message = `got $${number} in the reason of ${reason}`;
       self.store.log.addMessage(message);
       self.changeBalance(number);
@@ -128,6 +137,23 @@ const player = types
       const message = `lost $${number} in the reason of ${reason}`;
       self.store.log.addMessage(message);
       self.changeBalance(-number);
+    },
+    getIncome() {
+      let income = self.income;
+      if (self.isNeedy) {
+        income += self.store.rules.allowance
+      }
+      let message;
+      if (self.isNeedy && self.hasIncome) {
+        message = 'as property income and low-income allowance'
+      }
+      if (!self.hasIncome) {
+        message =  'as low-income allowance'
+      }
+      if (!self.isNeedy && self.hasIncome) {
+        message =  'as property income'
+      }
+      self.getMoney(income, message)
     }
   }));
 

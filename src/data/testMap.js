@@ -15,7 +15,7 @@ export default {
     {
       id: 2,
       caption: "\"Erudito\" bookstore",
-      description: "Price - $5000, income = $1500",
+      description: "Price - $12000, income = $4000",
       position: { x: 1, y: 2 },
       prev: [{ x: 1, y: 1 }],
       next: [{ x: 1, y: 3 }],
