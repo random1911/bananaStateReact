@@ -93,6 +93,7 @@ const player = types
       self.getIncome();
     },
     move(number) {
+      let newRound;
       self.onStartMoving();
       const getNextTiles = currentTile =>
         self.store.gameMap.getTile(currentTile).next;
@@ -112,10 +113,11 @@ const player = types
         setTimeout(() => {
           self.setNewPosition(item.x, item.y);
           if (index > 0 && self.store.gameMap.checkOnStart(item)) {
-            self.onNewRound();
+            newRound = true;
           }
           if (index + 1 === path.length) {
             self.onEndMoving();
+            newRound && self.onNewRound();
           }
         }, delay * index);
       });
@@ -126,16 +128,16 @@ const player = types
         ? self.stats.addMoneyEarned(number)
         : self.stats.addMoneySpent(number);
     },
-    getMoney(number, reason) {
-      // TODO: use add to last on events and short message here.
-      // 'got $${number}' here, '. He was lucky at lottery' on event
-      const message = `got $${number} in the reason of ${reason}`;
-      self.store.log.addMessage(message);
+    getMoney(number, message) {
+      const info = `got $${number}`;
+      self.store.log.addMessage(info);
+      message && self.store.log.addToLast(message);
       self.changeBalance(number);
     },
-    looseMoney(number, reason) {
-      const message = `lost $${number} in the reason of ${reason}`;
-      self.store.log.addMessage(message);
+    looseMoney(number, message) {
+      const info = `lost $${number}`;
+      self.store.log.addMessage(info);
+      message && self.store.log.addToLast(message);
       self.changeBalance(-number);
     },
     getIncome() {
@@ -145,13 +147,13 @@ const player = types
       }
       let message;
       if (self.isNeedy && self.hasIncome) {
-        message = 'as property income and low-income allowance'
+        message = ' as property income and low-income allowance'
       }
       if (!self.hasIncome) {
-        message =  'as low-income allowance'
+        message =  ' as low-income allowance'
       }
       if (!self.isNeedy && self.hasIncome) {
-        message =  'as property income'
+        message =  ' as property income'
       }
       self.getMoney(income, message)
     }

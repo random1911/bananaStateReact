@@ -51,7 +51,7 @@ export default {
       event: {
         type: "getMoney",
         value: 2000,
-        text: "won a lottery"
+        text: ". He was lucky at lottery"
       }
     },
     {
@@ -117,7 +117,7 @@ export default {
       event: {
         type: "lostMoney",
         value: 1000,
-        text: "robbery"
+        text: ". It was a robbery!"
       }
     },
     {
