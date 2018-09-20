@@ -3,8 +3,9 @@ import player from "./player";
 import smallProperty from "./smallProperty";
 import GameMap from "./map";
 import Log from "./log";
-import manualAction, {emptyManualAction} from "./manualAction";
-import rules from "./rules"
+import manualAction, { emptyManualAction } from "./manualAction";
+import rules from "./rules";
+import ui from "./ui";
 
 const model = {
   isRunning: false,
@@ -18,6 +19,7 @@ const model = {
   playerMoving: false,
   log: types.optional(Log, { messages: [] }),
   rules: types.optional(rules, {}),
+  ui: types.optional(ui, {}),
 };
 
 const views = self => ({
@@ -51,10 +53,10 @@ const actions = self => ({
     self.activePlayer = self.players[0].id;
   },
   setManualAction(action) {
-    applySnapshot(self.manualAction, action)
+    applySnapshot(self.manualAction, action);
   },
   clearManualAction() {
-    applySnapshot(self.manualAction, emptyManualAction)
+    applySnapshot(self.manualAction, emptyManualAction);
   },
   teleportPlayer(coordinates, playerId) {
     const player = playerId
