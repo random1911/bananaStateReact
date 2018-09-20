@@ -26,24 +26,24 @@ const smallPropertyList = [
     id: 'erudito',
     name: '"Erudito" bookstore',
     description: 'a small bookstore',
-    income: 1500,
-    price: 5000,
+    income: 4000,
+    price: 12000,
     illegal: false
   },
   {
     id: 'madAntonio',
     name: 'Mad Antonio saloon',
     description: 'Popular backstreet bar',
-    income: 3500,
-    price: 8000,
+    income: 8000,
+    price: 15000,
     illegal: true
   },
   {
     id: 'StMichelPharmacy',
     name: 'St. Michel pharmacy',
     description: 'Pharmacy store',
-    income: 2000,
-    price: 6000,
+    income: 3500,
+    price: 10000,
     illegal: false
   },
   {

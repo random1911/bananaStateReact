@@ -1,16 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import {inject, observer} from 'mobx-react'
-import {Link} from 'react-router-dom'
-import {
-  Wrapper,
-  Heading,
-  Nav,
-  Menu,
-  MenuItem,
-} from './WelcomeStyled'
+import React from "react";
+import PropTypes from "prop-types";
+import { inject, observer } from "mobx-react";
+import { Link } from "react-router-dom";
+import { Wrapper, Heading, Nav, Menu, MenuItem } from "./WelcomeStyled";
 
-const Welcome = ({store}) => {
+const Welcome = ({ store }) => {
   return (
     <Wrapper>
       <Heading>Welcome to Costa de Banana!</Heading>
@@ -22,10 +16,10 @@ const Welcome = ({store}) => {
         </Menu>
       </Nav>
     </Wrapper>
-  )
-}
+  );
+};
 Welcome.propTypes = {
-  store: PropTypes.object.isRequired,
-}
+  store: PropTypes.object.isRequired
+};
 
-export default inject('store')(observer(Welcome))
+export default inject("store")(observer(Welcome));

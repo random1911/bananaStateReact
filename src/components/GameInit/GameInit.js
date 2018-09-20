@@ -5,25 +5,6 @@ import { Wrapper } from "./GameInitStyled";
 import smallProperty from "../../data/smallProperty"
 import testMap from "../../data/testMap"
 
-function createPlayer(color, name) {
-  return {
-    color,
-    name,
-    id: color,
-    balance: 10000,
-    stats: {
-      rounds: 0,
-      moneySpent: 0,
-      moneyEarned: 0
-    }
-  };
-}
-
-const playersSnap = [
-  createPlayer("red", "John"),
-  createPlayer("blue", "Pablo")
-];
-
 /*
 id: types.number,
   caption: types.string,
@@ -48,6 +29,24 @@ id: types.number,
 * */
 
 const GameInit = ({ store }) => {
+  const {startBalance} = store.rules;
+  const createPlayer = (color, name) => {
+    return {
+      color,
+      name,
+      id: color,
+      balance: startBalance,
+      stats: {
+        rounds: 0,
+        moneySpent: 0,
+        moneyEarned: 0
+      }
+    };
+  };
+  const playersSnap = [
+    createPlayer("red", "John"),
+    createPlayer("blue", "Pablo")
+  ];
   const init = () => {
     const snap = {
       players: playersSnap,

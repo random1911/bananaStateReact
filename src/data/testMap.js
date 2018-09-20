@@ -15,7 +15,7 @@ export default {
     {
       id: 2,
       caption: "\"Erudito\" bookstore",
-      description: "Price - $5000, income = $1500",
+      description: "Price - $12000, income = $4000",
       position: { x: 1, y: 2 },
       prev: [{ x: 1, y: 1 }],
       next: [{ x: 1, y: 3 }],
@@ -51,16 +51,24 @@ export default {
       event: {
         type: "getMoney",
         value: 2000,
-        text: "won a lottery"
+        text: ". He was lucky at lottery"
       }
     },
     {
       id: 5,
-      caption: "",
-      description: "",
+      caption: "Mad Antonio saloon",
+      description: "Popular backstreet bar",
       position: { x: 3, y: 3 },
       prev: [{ x: 2, y: 3 }],
-      next: [{ x: 4, y: 3 }]
+      next: [{ x: 4, y: 3 }],
+      event: {
+        type: "manual",
+        manualAction: {
+          type: "buySmallProperty",
+          reference: "madAntonio",
+          caption: "Buy \"Mad Antonio\""
+        }
+      }
     },
     {
       id: 6,
@@ -77,11 +85,19 @@ export default {
     },
     {
       id: 7,
-      caption: "",
+      caption: "St. Michel pharmacy",
       description: "",
       position: { x: 4, y: 2 },
       prev: [{ x: 4, y: 3 }],
-      next: [{ x: 4, y: 1 }]
+      next: [{ x: 4, y: 1 }],
+      event: {
+        type: "manual",
+        manualAction: {
+          type: "buySmallProperty",
+          reference: "StMichelPharmacy",
+          caption: "Buy \"St. Michel pharmacy\""
+        }
+      }
     },
     {
       id: 8,
@@ -101,7 +117,7 @@ export default {
       event: {
         type: "lostMoney",
         value: 1000,
-        text: "robbery"
+        text: ". It was a robbery!"
       }
     },
     {
