@@ -33,13 +33,15 @@ class Modal extends Component {
   }
 
   componentDidMount() {
-    const { isOpen, store, id, blocking } = this.props;
+    const { isOpen, store, id } = this.props;
     isOpen && store.ui.findModal(id).open();
-    !blocking && document.addEventListener("keydown", this.handleKeyDown);
   }
-  componentWillUnmount() {
-    document.removeEventListener("keydown", this.handleKeyDown);
-    // TODO: actually remove this event listener
+  componentDidUpdate() {
+    const { store, id, blocking } = this.props;
+    const isOpen = store.ui.findModal(id).isOpen;
+    isOpen &&
+      !blocking &&
+      document.addEventListener("keydown", this.handleKeyDown);
   }
 
   handleKeyDown = e => {
@@ -48,9 +50,9 @@ class Modal extends Component {
   };
 
   handleClose = () => {
-    const { store, id, onClose } = this.props;
+    const { store, id } = this.props;
     store.ui.findModal(id).close();
-    onClose && onClose();
+    document.removeEventListener("keydown", this.handleKeyDown);
   };
 
   render() {

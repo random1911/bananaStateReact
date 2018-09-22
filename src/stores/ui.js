@@ -22,7 +22,7 @@ const ui = types
     },
     closeModal(id) {
       self.findModal(id).close()
-    }
+    },
   }));
 
 export default ui;
