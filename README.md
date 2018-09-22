@@ -13,14 +13,13 @@
 * manual acton button (for buy something for example)
 * buy small property
 * getter for check is manual action is available
+* modal windows
+* i18next instead of hardcoding strings
 
 ##TODO:
 
-* modal windows
-* identificators of strings instead of hardcoding
 * tile: if this is a small property, get caption description and other info from associated property. Also make a component what can represent this information inside the tile.  
 * advanced movement
-* basic modal window realization (portals)
 * tile events
 * stock property and stocks mechanics
 * stocks UI view

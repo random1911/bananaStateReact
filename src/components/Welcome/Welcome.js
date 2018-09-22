@@ -4,6 +4,7 @@ import { inject, observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import { Wrapper, Heading, Nav, Menu, MenuItem } from "./WelcomeStyled";
 import Modal from '../Modal/Modal'
+import Translate from '../Translate/Translate'
 
 const Welcome = ({ store }) => {
   const sayHello = () => {
@@ -11,11 +12,15 @@ const Welcome = ({ store }) => {
   }
   return (
     <Wrapper>
-      <Heading>Welcome to Costa de Banana!</Heading>
+      <Heading>
+        <Translate id="welcome.welcomeHeading" />
+      </Heading>
       <Nav>
         <Menu>
           <MenuItem>
-            <Link to="/play">Play</Link>
+            <Link to="/play">
+              <Translate id="welcome.menu.play" />
+            </Link>
           </MenuItem>
         </Menu>
       </Nav>
