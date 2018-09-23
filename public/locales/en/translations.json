@@ -29,7 +29,9 @@
     "lostMoney": "lost ${{number}}",
     "incomePropertyAllowance": "as property income and low-income allowance",
     "incomeAllowance": "as low-income allowance",
-    "incomeProperty": "as property income"
+    "incomeProperty": "as property income",
+    "rolled": "has rolled {{roll}}",
+    "buyingProperty": "buying the {{name}}"
   },
   "notFound": {
     "notFoundText": "Not found. You can go to the",

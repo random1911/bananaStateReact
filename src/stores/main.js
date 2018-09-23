@@ -1,4 +1,5 @@
 import { types, applySnapshot } from "mobx-state-tree";
+import { t } from "i18next";
 import player from "./player";
 import smallProperty from "./smallProperty";
 import GameMap from "./map";
@@ -76,10 +77,10 @@ const actions = self => ({
     return Math.floor(Math.random() * (max - min + 1)) + min;
   },
   makeRoll() {
-    const res = self.getRollResult();
-    const message = `has rolled ${res}`;
+    const roll = self.getRollResult();
+    const message = t('log.rolled', {roll});
     self.log.addMessage(message);
-    self.activePlayer.move(res);
+    self.activePlayer.move(roll);
     self.setRollStatus(true);
   },
   endTurn() {
