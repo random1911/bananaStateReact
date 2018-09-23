@@ -1,6 +1,7 @@
 {
   "general": {
-    "close": "Close"
+    "close": "Close",
+    "Turn": "Turn"
   },
   "welcome": {
     "welcomeHeading": "Welcome to Costa de Banana!",
@@ -16,6 +17,19 @@
     "makingTurn": "Making turn",
     "waitingForTurn": "Await for turn",
     "frozenDesc": "{{reason}}, frozen for {{count}} turns"
+  },
+  "log": {
+    "notInactive": "is no longer inactive",
+    "willBeActiveNext": "will be active next turn",
+    "willBeActiveIn": "will be inactive {{count}} more turns",
+    "frozenIntro": "become inactive for {{duration}} turns",
+    "frozenReason": "because of {{reason}}",
+    "wentToTile": "and went to tile",
+    "gotMoney": "got ${{number}}",
+    "lostMoney": "lost ${{number}}",
+    "incomePropertyAllowance": "as property income and low-income allowance",
+    "incomeAllowance": "as low-income allowance",
+    "incomeProperty": "as property income"
   },
   "notFound": {
     "notFoundText": "Not found. You can go to the",
