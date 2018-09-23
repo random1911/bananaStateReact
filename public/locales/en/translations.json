@@ -33,6 +33,9 @@
     "rolled": "has rolled {{roll}}",
     "buyingProperty": "buying the {{name}}"
   },
+  "actions": {
+    "buyButtonText": "Buy {{name}}"
+  },
   "notFound": {
     "notFoundText": "Not found. You can go to the",
     "mainPage": "main page"

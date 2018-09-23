@@ -51,7 +51,16 @@ export const TileCaption = styled.div`
 `;
 export const TileDescription = styled.div`
   margin: 10px;
+  font-size: 12px;
 `;
+export const TileChips = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  padding: 5px;
+`
 export const Chip = styled.div`
   display: inline-flex;
   border-radius: 50%;

@@ -5,6 +5,7 @@ import {
   TileCaption,
   TileNumber,
   TileDescription,
+  TileChips
 } from './GameBoardStyled'
 import PlayerChip from './PlayerChip'
 
@@ -30,9 +31,9 @@ const Tile = ({id, caption, position, description, players, prev, next, borders}
       <TileDescription>
         {description}
       </TileDescription>
-      <div>
+      <TileChips>
         {players && players.map(renderPlayers)}
-      </div>
+      </TileChips>
     </TileBody>
   )
 }

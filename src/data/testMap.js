@@ -14,19 +14,10 @@ export default {
     },
     {
       id: 2,
-      caption: "\"Erudito\" bookstore",
-      description: "Price - $12000, income = $4000",
+      smallProperty: "erudito",
       position: { x: 1, y: 2 },
       prev: [{ x: 1, y: 1 }],
       next: [{ x: 1, y: 3 }],
-      event: {
-        type: "manual",
-        manualAction: {
-          type: "buySmallProperty",
-          reference: "erudito",
-          caption: "Buy \"Erudito\""
-        }
-      }
     },
     {
       id: 3,
@@ -56,19 +47,10 @@ export default {
     },
     {
       id: 5,
-      caption: "Mad Antonio saloon",
-      description: "Popular backstreet bar",
+      smallProperty: "madAntonio",
       position: { x: 3, y: 3 },
       prev: [{ x: 2, y: 3 }],
-      next: [{ x: 4, y: 3 }],
-      event: {
-        type: "manual",
-        manualAction: {
-          type: "buySmallProperty",
-          reference: "madAntonio",
-          caption: "Buy \"Mad Antonio\""
-        }
-      }
+      next: [{ x: 4, y: 3 }]
     },
     {
       id: 6,
@@ -85,19 +67,11 @@ export default {
     },
     {
       id: 7,
-      caption: "St. Michel pharmacy",
+      smallProperty: "StMichelPharmacy",
       description: "",
       position: { x: 4, y: 2 },
       prev: [{ x: 4, y: 3 }],
       next: [{ x: 4, y: 1 }],
-      event: {
-        type: "manual",
-        manualAction: {
-          type: "buySmallProperty",
-          reference: "StMichelPharmacy",
-          caption: "Buy \"St. Michel pharmacy\""
-        }
-      }
     },
     {
       id: 8,
