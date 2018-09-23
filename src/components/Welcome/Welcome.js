@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import { Wrapper, Heading, Nav, Menu, MenuItem } from "./WelcomeStyled";
-import Modal from '../Modal/Modal'
-import Translate from '../Translate/Translate'
+import Modal from "../Modal/Modal";
+import Translate from "../Translate/Translate";
 
 const Welcome = ({ store }) => {
   const sayHello = () => {
-    store.ui.openModal('Hello')
-  }
+    store.ui.openModal("Hello");
+  };
   return (
     <Wrapper>
       <Heading>
@@ -25,7 +25,7 @@ const Welcome = ({ store }) => {
         </Menu>
       </Nav>
       <button onClick={sayHello}>say hello</button>
-      <Modal id="Hello" caption="Hello">
+      <Modal id="Hello" captionId="welcome.welcomeHeading">
         This is a test
       </Modal>
     </Wrapper>

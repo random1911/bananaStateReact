@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import { translate } from 'react-i18next';
 import Welcome from './components/Welcome/Welcome'
 import NotFound from './components/NotFound/NotFound'
 import GameWrapper from './components/GameWrapper/GameWrapper'
@@ -25,4 +26,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default translate('translations')(App);

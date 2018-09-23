@@ -1,6 +1,6 @@
 import { types, getRoot } from "mobx-state-tree";
+import { t } from 'i18next'
 import { availableColors } from "./colors";
-// import smallProperty from "./smallProperty";
 import { coordinates } from "./map";
 import stats from "./playerStats";
 
@@ -42,7 +42,15 @@ const player = types
     },
     get isNeedy() {
       return self.income <= self.store.rules.povertyLine
-    }
+    },
+    get isActiveNow() {
+      return self.store.activePlayer.id === self.id
+    },
+    get currentStatus() {
+      if (self.isFrozen) return t('playerInfo.frozenDesc', {reason: self.frozenStatus, count: self.frozenTurnsCount})
+      if (self.isActiveNow) return t('playerInfo.makingTurn')
+      if (!self.isActiveNow) return t('playerInfo.waitingForTurn')
+    },
   }))
   .actions(self => ({
     checkFrozen() {

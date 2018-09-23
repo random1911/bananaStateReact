@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import ReactDOM from "react-dom";
+import { t } from "i18next";
+import Translate from "../Translate/Translate";
 import {
   ModalContainer,
   ModalCloseOnOutside,
   ModalCaption,
   ModalClose,
-  ModalCloseText,
   ModalContent,
   ModalHeader,
   ModalWrapper
@@ -18,6 +19,7 @@ class Modal extends Component {
     id: PropTypes.string.isRequired,
     isOpen: PropTypes.bool,
     caption: PropTypes.string,
+    captionId: PropTypes.string,
     onClose: PropTypes.func,
     blocking: PropTypes.bool,
     children: PropTypes.node.isRequired
@@ -56,19 +58,25 @@ class Modal extends Component {
   };
 
   render() {
-    const { caption, blocking, children, id, store } = this.props;
+    const { caption, captionId, blocking, children, id, store } = this.props;
     const modal = store.ui.findModal(id);
     const modalRoot = document.getElementById("modal-root");
+    const closeText = t("general.close");
+    const CaptionTemplate = () => {
+      if (!caption && !captionId) return null;
+      if (captionId) return <Translate id={captionId} />;
+      return caption;
+    };
     const template = (
       <ModalWrapper>
         {!blocking && <ModalCloseOnOutside onClick={this.handleClose} />}
         <ModalContainer>
           <ModalHeader>
-            <ModalCaption>{caption}</ModalCaption>
+            <ModalCaption>
+              <CaptionTemplate />
+            </ModalCaption>
             {!blocking && (
-              <ModalClose onClick={this.handleClose}>
-                <ModalCloseText>Close</ModalCloseText>
-              </ModalClose>
+              <ModalClose title={closeText} onClick={this.handleClose} />
             )}
           </ModalHeader>
           <ModalContent>{children}</ModalContent>

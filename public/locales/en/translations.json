@@ -1,8 +1,24 @@
 {
+  "general": {
+    "close": "Close"
+  },
   "welcome": {
     "welcomeHeading": "Welcome to Costa de Banana!",
     "menu": {
       "play": "Play"
     }
+  },
+  "playerInfo": {
+    "balance": "Balance",
+    "income": "Income",
+    "frozen": "Frozen",
+    "status": "Status",
+    "makingTurn": "Making turn",
+    "waitingForTurn": "Await for turn",
+    "frozenDesc": "{{reason}}, frozen for {{count}} turns"
+  },
+  "notFound": {
+    "notFoundText": "Not found. You can go to the",
+    "mainPage": "main page"
   }
 }
