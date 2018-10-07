@@ -10,13 +10,10 @@ const GameBoard = ({ store }) => {
   const renderTile = tile => (
     <Tile
       key={tile.id}
-      position={tile.position}
-      next={tile.next}
-      prev={tile.prev}
-      id={tile.id}
-      caption={tile.caption}
-      players={tile.players}
       borders={tile.borders}
+      players={tile.players}
+      {...tile}
+
     />
   );
   return (

@@ -72,9 +72,6 @@ export const ModalClose = styled.button`
     transform: rotate(-45deg);
   }
 `;
-export const ModalCloseText = styled.span`
-  ${p => p.theme.mixins.visuallyHidden()};
-`;
 
 export const ModalContent = styled.div`
   padding: 10px;

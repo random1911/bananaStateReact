@@ -1,10 +1,12 @@
 import { types, applySnapshot } from "mobx-state-tree";
+import { t } from "i18next";
 import player from "./player";
 import smallProperty from "./smallProperty";
 import GameMap from "./map";
 import Log from "./log";
-import manualAction, {emptyManualAction} from "./manualAction";
-import rules from "./rules"
+import manualAction, { emptyManualAction } from "./manualAction";
+import rules from "./rules";
+import ui from "./ui";
 
 const model = {
   isRunning: false,
@@ -18,6 +20,7 @@ const model = {
   playerMoving: false,
   log: types.optional(Log, { messages: [] }),
   rules: types.optional(rules, {}),
+  ui: types.optional(ui, {}),
 };
 
 const views = self => ({
@@ -51,10 +54,10 @@ const actions = self => ({
     self.activePlayer = self.players[0].id;
   },
   setManualAction(action) {
-    applySnapshot(self.manualAction, action)
+    applySnapshot(self.manualAction, action);
   },
   clearManualAction() {
-    applySnapshot(self.manualAction, emptyManualAction)
+    applySnapshot(self.manualAction, emptyManualAction);
   },
   teleportPlayer(coordinates, playerId) {
     const player = playerId
@@ -74,10 +77,10 @@ const actions = self => ({
     return Math.floor(Math.random() * (max - min + 1)) + min;
   },
   makeRoll() {
-    const res = self.getRollResult();
-    const message = `has rolled ${res}`;
+    const roll = self.getRollResult();
+    const message = t('log.rolled', {roll});
     self.log.addMessage(message);
-    self.activePlayer.move(res);
+    self.activePlayer.move(roll);
     self.setRollStatus(true);
   },
   endTurn() {

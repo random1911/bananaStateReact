@@ -1,16 +1,7 @@
 import { types, getRoot } from "mobx-state-tree";
+import { t } from "i18next";
 import event from "./event";
-
-/*
-События клетки
-Новый круг
-Получить деньги (сумма) описание
-Потерять деньги (сумма) описание
-Мелкая собственность - ид, стоимость, доход, легальность
-Крупная собственность - ид, стоимость акции, доход акции
-Заморозка (ходы), причина
-Что-то произошло с акциями - какими, куда, и т.д.
-  * */
+import smallProperty from "./smallProperty";
 
 export const coordinates = types.model("Coordinates", {
   x: types.number,
@@ -21,12 +12,13 @@ export const coordinates = types.model("Coordinates", {
 const tile = types
   .model("tilesModel", {
     id: types.number,
-    caption: types.string,
-    description: types.string,
+    caption: types.maybe(types.string),
+    description: types.maybe(types.string),
     position: coordinates,
     next: types.array(coordinates),
     prev: types.array(coordinates),
-    event: types.maybe(event)
+    event: types.maybe(event),
+    smallProperty: types.maybe(types.reference(smallProperty))
   })
   .views(self => ({
     get store() {
@@ -67,7 +59,29 @@ const tile = types
         right: HaveRightBorder()
       };
     }
-  }));
+  }))
+  .actions(self => ({
+    afterCreate() {
+      if (self.smallProperty) {
+        console.log(self.smallProperty)
+        self.setSmallProperty()
+      }
+    },
+
+    setSmallProperty() {
+      const {name, description, id} = self.smallProperty
+      self.caption = name
+      self.description = description
+      self.event = {
+        type: "manual",
+        manualAction: {
+          type: "buySmallProperty",
+          reference: id,
+          caption: t('actions.buyButtonText', {name})
+        }
+      }
+    }
+  }))
 
 const GameMap = types
   .model("MapModel", {

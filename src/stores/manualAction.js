@@ -1,5 +1,5 @@
 import { types, getRoot } from "mobx-state-tree";
-
+import { t } from "i18next";
 /*
 available types:
 buy small property
@@ -50,7 +50,7 @@ const manualAction = types
       const property = self.store.findSmallProperty(self.reference);
       const player = self.store.activePlayer;
       if (!property.ownerId && player.balance >= property.price) {
-        player.looseMoney(property.price, ` buying the "${property.name}"`);
+        player.looseMoney(property.price, ` ${t('log.buyingProperty', {name: property.name})}`);
         property.setOwner(player.id);
       }
     }

@@ -13,10 +13,15 @@
 * manual acton button (for buy something for example)
 * buy small property
 * getter for check is manual action is available
+* modal windows
+* i18next instead of hardcoding strings
+* tile: if this is a small property, get caption description and other info from associated property.
 
 ##TODO:
 
-* basic modal window realization (portals)
+* small property: localize
+* small property: display cost, income, owner on map
+* localize for all tiles and events
 * advanced movement
 * tile events
 * stock property and stocks mechanics

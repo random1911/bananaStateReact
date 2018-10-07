@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import Translate from "../Translate/Translate";
 import {
   Wrapper,
   Status,
@@ -13,7 +14,7 @@ const NotFound = () => {
         404
       </Status>
       <Text>
-        Not found. You can go to the <Link to="/">main page</Link>.
+        <Translate id="notFound.notFoundText" /> <Link to="/"><Translate id="notFound.mainPage" /></Link>.
       </Text>
     </Wrapper>
   )
