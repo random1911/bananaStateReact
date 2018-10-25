@@ -13,6 +13,7 @@ export const ModalWrapper = styled.div`
   overflow: hidden;
   align-items: center;
   justify-content: center;
+  padding: 40px;
 `;
 
 export const ModalCloseOnOutside = styled.div`
@@ -28,12 +29,16 @@ export const ModalContainer = styled.div`
   background: #fff;
   position: relative;
   min-width: 320px;
+  display:flex;
+  flex-direction: column;
+  overflow: hidden;
 `;
 
 export const ModalHeader = styled.header`
   display: flex;
   overflow: hidden;
   background: ${p => p.theme.colors.coast()};
+  flex: none;
 `;
 
 export const ModalCaption = styled.h2`
@@ -75,4 +80,6 @@ export const ModalClose = styled.button`
 
 export const ModalContent = styled.div`
   padding: 10px;
+  flex: 0 1;
+  overflow-y: auto;
 `;

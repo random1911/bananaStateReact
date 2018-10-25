@@ -1,14 +1,16 @@
-import { types } from "mobx-state-tree";
+import { types, getRoot } from "mobx-state-tree";
 
 const modal = types
   .model("Modal", {
     isOpen: false,
     id: types.identifier
   })
+  .views(self => ({
+    get store() {
+      return getRoot(self)
+    }
+  }))
   .actions(self => ({
-    toggleVisibility() {
-      self.isOpen = !self.isOpen;
-    },
     open() {
       self.isOpen = true;
     },

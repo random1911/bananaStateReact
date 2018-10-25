@@ -1,6 +1,6 @@
 # This is a third try to make a board game. Now with react!
 
-##Done:
+## Done:
 
 * map generation
 * turn cycle
@@ -17,7 +17,7 @@
 * i18next instead of hardcoding strings
 * tile: if this is a small property, get caption description and other info from associated property.
 
-##TODO:
+## TODO:
 
 * small property: localize
 * small property: display cost, income, owner on map
@@ -30,7 +30,7 @@
 * init game screen with settings and quick start feature
 * lots, lots of UI!
 
-##Future milestones:
+## Future milestones:
 
 * win conditions
 * game rules and help
