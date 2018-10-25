@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { Wrapper, Heading, Nav, Menu, MenuItem } from "./WelcomeStyled";
 import Modal from "../Modal/Modal";
 import Translate from "../Translate/Translate";
+import MarkOut from "../MarkOut/MarkOut"
 
 const Welcome = ({ store }) => {
   const sayHello = () => {
     store.ui.openModal("Hello");
   };
+  const text = `I was a child\nwhen I meet her\nbut now we are adults`
   return (
     <Wrapper>
       <Heading>
@@ -25,6 +27,9 @@ const Welcome = ({ store }) => {
         </Menu>
       </Nav>
       <button onClick={sayHello}>say hello</button>
+
+      <MarkOut source={text} wrapper={Menu} lineWrapper={MenuItem} />
+
       <Modal id="Hello" captionId="welcome.welcomeHeading">
         This is a test
       </Modal>
