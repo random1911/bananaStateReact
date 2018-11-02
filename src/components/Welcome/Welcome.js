@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Wrapper, Heading, Nav, Menu, MenuItem } from "./WelcomeStyled";
 import Modal from "../Modal/Modal";
 import Translate from "../Translate/Translate";
-import MarkOut from "../MarkOut/MarkOut"
+import {LineBreaker} from "../MarkOut/MarkOut"
 
 const Welcome = ({ store }) => {
   const sayHello = () => {
@@ -28,7 +28,7 @@ const Welcome = ({ store }) => {
       </Nav>
       <button onClick={sayHello}>say hello</button>
 
-      <MarkOut source={text} wrapper={Menu} lineWrapper={MenuItem} />
+      <LineBreaker source={text} wrapper="div" lineWrapper="p" />
 
       <Modal id="Hello" captionId="welcome.welcomeHeading">
         This is a test
