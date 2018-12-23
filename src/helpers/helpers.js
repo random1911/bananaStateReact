@@ -9,3 +9,15 @@ export const getPromise = (result, timeout = 0) => {
     }, timeout)
   })
 }
+export const isElementInsideParent = (targetNode, parentNode) => {
+  if (targetNode === parentNode) {
+    return true
+  }
+  while (targetNode.parentElement && targetNode !== document.body) {
+    targetNode = targetNode.parentElement
+    if (targetNode === parentNode) {
+      return true
+    }
+  }
+  return false
+}

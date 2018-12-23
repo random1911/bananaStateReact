@@ -6,6 +6,44 @@ import { Wrapper, Heading, Nav, Menu, MenuItem } from "./WelcomeStyled";
 import Modal from "../Modal/Modal";
 import Translate from "../Translate/Translate";
 import {LineBreaker} from "../MarkOut/MarkOut"
+import Select from '../Dropdown/Select'
+
+const selectModel = [
+  {
+    id: 0,
+    value: 0,
+    name: 'First'
+  },
+  {
+    id: 1,
+    value: 2,
+    name: 'Second'
+  },
+  {
+    id: 2,
+    value: 2,
+    name: 'Third'
+  }
+]
+class ModalSelect extends React.Component {
+  state = {
+    selected: {...selectModel[0]}
+  }
+  onSelect = selected => {
+    this.setState({selected})
+  }
+  render() {
+    const {selected} = this.state
+    return (
+      <div>
+        <Select items={selectModel} selected={selected} onSelect={this.onSelect} />
+        <div>
+          Now selected: {selected.name}
+        </div>
+      </div>
+    )
+  }
+}
 
 const Welcome = ({ store }) => {
   const sayHello = () => {
@@ -32,6 +70,7 @@ const Welcome = ({ store }) => {
 
       <Modal id="Hello" captionId="welcome.welcomeHeading">
         This is a test
+        <ModalSelect />
       </Modal>
     </Wrapper>
   );
