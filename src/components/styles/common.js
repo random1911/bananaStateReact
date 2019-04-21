@@ -1,7 +1,7 @@
-import {injectGlobal} from 'styled-components'
-import theme from './theme'
+import { createGlobalStyle } from "styled-components";
+import theme from "./theme";
 
-injectGlobal`
+createGlobalStyle`
   *,
   *:before,
   *:after {
@@ -13,4 +13,4 @@ injectGlobal`
     padding: 0;
     font: 400 ${theme.fonts.size} / 1.4 ${theme.fonts.family};
   }
-`
+`;
