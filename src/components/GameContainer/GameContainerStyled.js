@@ -1,14 +1,14 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const getColor = p => {
-  const color = p.color
+  const color = p.color;
   if (!color) {
-    return '#ccc'
+    return "#ccc";
   } else {
-    const computedColor = p.theme.colors[color]
-    return computedColor()
+    const computedColor = p.theme.colors[color];
+    return computedColor();
   }
-}
+};
 
 export const Wrapper = styled.div`
   width: 100vw;
@@ -19,16 +19,16 @@ export const Wrapper = styled.div`
   flex-direction: column;
   border: 4px solid ${p => getColor(p)};
   transition: border-color ${p => p.theme.transition};
-`
+`;
 
 export const WrapperMain = styled.div`
   flex: 1;
   position: relative;
   z-index: 1;
-`
+`;
 
 export const WrapperBottom = styled.div`
   border-top: 1px solid ${p => p.theme.colors.borderColor()};
   display: flex;
   flex: none;
-`
+`;

@@ -13,7 +13,6 @@ const GameBoard = ({ store }) => {
       borders={tile.borders}
       players={tile.players}
       {...tile}
-
     />
   );
   return (

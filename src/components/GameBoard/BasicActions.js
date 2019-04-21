@@ -4,12 +4,19 @@ import { inject, observer } from "mobx-react";
 import { BasicActionsWrapper } from "./GameBoardStyled";
 
 const BasicActions = ({ store }) => {
-  const { playerMoving, makeRoll, endTurn, rolled, activePlayer, manualAction } = store;
+  const {
+    playerMoving,
+    makeRoll,
+    endTurn,
+    rolled,
+    activePlayer,
+    manualAction
+  } = store;
   const rollDisabled = playerMoving || rolled || activePlayer.isFrozen;
   const endDisabled = playerMoving || !rolled;
-  const manualActionCaption = manualAction && manualAction.caption
-  const handleManualAction = manualAction && manualAction.handleAction
-  const manualActionAvailable = manualAction && manualAction.isAvailable
+  const manualActionCaption = manualAction && manualAction.caption;
+  const handleManualAction = manualAction && manualAction.handleAction;
+  const manualActionAvailable = manualAction && manualAction.isAvailable;
   return (
     <BasicActionsWrapper>
       <button onClick={makeRoll} disabled={rollDisabled}>
@@ -18,7 +25,11 @@ const BasicActions = ({ store }) => {
       <button onClick={endTurn} disabled={endDisabled}>
         END
       </button>
-      {manualAction.type && <button disabled={!manualActionAvailable} onClick={handleManualAction}>{manualActionCaption}</button>}
+      {manualAction.type && (
+        <button disabled={!manualActionAvailable} onClick={handleManualAction}>
+          {manualActionCaption}
+        </button>
+      )}
     </BasicActionsWrapper>
   );
 };

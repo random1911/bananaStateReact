@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { Container, Scroll, List } from "./GameLogStyled";
@@ -7,9 +7,9 @@ import LogMessage from "./LogMessage";
 class GameLog extends Component {
   static propTypes = {
     store: PropTypes.object.isRequired
-  }
-  scrollId = 'gameLogScroll'
-  listId = 'gameLogList'
+  };
+  scrollId = "gameLogScroll";
+  listId = "gameLogList";
   renderMessage = message => (
     <LogMessage
       key={message.id}
@@ -20,12 +20,12 @@ class GameLog extends Component {
     />
   );
   scrollToBottom = () => {
-    const container = document.getElementById(this.scrollId)
-    const list = document.getElementById(this.listId)
-    container.scrollTop = list.offsetHeight
-  }
+    const container = document.getElementById(this.scrollId);
+    const list = document.getElementById(this.listId);
+    container.scrollTop = list.offsetHeight;
+  };
   componentDidUpdate() {
-    this.scrollToBottom()
+    this.scrollToBottom();
   }
   render() {
     const { messages } = this.props.store.log;
@@ -37,7 +37,6 @@ class GameLog extends Component {
       </Container>
     );
   }
-
 }
 
 const GameLog1 = ({ store }) => {

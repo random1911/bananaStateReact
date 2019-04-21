@@ -29,7 +29,7 @@ export const ModalContainer = styled.div`
   background: #fff;
   position: relative;
   min-width: 320px;
-  display:flex;
+  display: flex;
   flex-direction: column;
   overflow: hidden;
 `;

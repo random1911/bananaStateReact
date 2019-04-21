@@ -7,7 +7,7 @@ const modal = types
   })
   .views(self => ({
     get store() {
-      return getRoot(self)
+      return getRoot(self);
     }
   }))
   .actions(self => ({

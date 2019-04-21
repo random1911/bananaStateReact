@@ -5,43 +5,45 @@ import { Link } from "react-router-dom";
 import { Wrapper, Heading, Nav, Menu, MenuItem } from "./WelcomeStyled";
 import Modal from "../Modal/Modal";
 import Translate from "../Translate/Translate";
-import {LineBreaker} from "../MarkOut/MarkOut"
-import Select from '../Dropdown/Select'
+import { LineBreaker } from "../MarkOut/MarkOut";
+import Select from "../Dropdown/Select";
 
 const selectModel = [
   {
     id: 0,
     value: 0,
-    name: 'First'
+    name: "First"
   },
   {
     id: 1,
     value: 2,
-    name: 'Second'
+    name: "Second"
   },
   {
     id: 2,
     value: 2,
-    name: 'Third'
+    name: "Third"
   }
-]
+];
 class ModalSelect extends React.Component {
   state = {
-    selected: {...selectModel[0]}
-  }
+    selected: { ...selectModel[0] }
+  };
   onSelect = selected => {
-    this.setState({selected})
-  }
+    this.setState({ selected });
+  };
   render() {
-    const {selected} = this.state
+    const { selected } = this.state;
     return (
       <div>
-        <Select items={selectModel} selected={selected} onSelect={this.onSelect} />
-        <div>
-          Now selected: {selected.name}
-        </div>
+        <Select
+          items={selectModel}
+          selected={selected}
+          onSelect={this.onSelect}
+        />
+        <div>Now selected: {selected.name}</div>
       </div>
-    )
+    );
   }
 }
 
@@ -49,7 +51,7 @@ const Welcome = ({ store }) => {
   const sayHello = () => {
     store.ui.openModal("Hello");
   };
-  const text = `I was a child\nwhen I meet her\nbut now we are adults`
+  const text = `I was a child\nwhen I meet her\nbut now we are adults`;
   return (
     <Wrapper>
       <Heading>

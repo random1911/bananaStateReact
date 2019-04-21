@@ -7,7 +7,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./components/styles/theme";
 import App from "./App";
 import i18n from "./i18n";
-import registerServiceWorker from "./registerServiceWorker";
+// import registerServiceWorker from "./registerServiceWorker";
 
 const store = Store.create({});
 
@@ -21,4 +21,4 @@ ReactDOM.render(
   </I18nextProvider>,
   document.getElementById("root")
 );
-registerServiceWorker();
+// registerServiceWorker();

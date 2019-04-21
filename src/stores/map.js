@@ -63,32 +63,32 @@ const tile = types
   .actions(self => ({
     afterCreate() {
       if (self.smallProperty) {
-        console.log(self.smallProperty)
-        self.setSmallProperty()
+        console.log(self.smallProperty);
+        self.setSmallProperty();
       }
     },
 
     setSmallProperty() {
-      const {name, description, id} = self.smallProperty
-      self.caption = name
-      self.description = description
+      const { name, description, id } = self.smallProperty;
+      self.caption = name;
+      self.description = description;
       self.event = {
         type: "manual",
         manualAction: {
           type: "buySmallProperty",
           reference: id,
-          caption: t('actions.buyButtonText', {name})
+          caption: t("actions.buyButtonText", { name })
         }
-      }
+      };
     }
-  }))
+  }));
 
 const GameMap = types
   .model("MapModel", {
     tiles: types.array(tile),
     height: types.maybe(types.number),
     width: types.maybe(types.number),
-    start: types.maybe(coordinates),
+    start: types.maybe(coordinates)
   })
   .actions(self => ({
     calculateSizes() {
@@ -105,7 +105,7 @@ const GameMap = types
       );
     },
     checkOnStart(coordinates) {
-      return coordinates.x === self.start.x && coordinates.y === self.start.y
+      return coordinates.x === self.start.x && coordinates.y === self.start.y;
     }
   }));
 

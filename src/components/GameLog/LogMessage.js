@@ -10,7 +10,7 @@ const LogMessage = ({ turn, playerColor, caption, message }) => (
       <span>{message}</span>
     </MessageText>
   </MessageBody>
-)
+);
 
 LogMessage.propTypes = {
   turn: PropTypes.number,

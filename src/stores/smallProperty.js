@@ -21,5 +21,4 @@ const smallProperty = types
     }
   }));
 
-
 export default smallProperty;

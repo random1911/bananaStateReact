@@ -5,7 +5,7 @@ const theme = {
     green: opacity => `rgba(6, 125, 50, ${opacity || 1})`,
     borderColor: () => "#464646",
     coast: () => "#81d4fa",
-    banana: () => "#ffeb3b",
+    banana: () => "#ffeb3b"
   },
   mixins: {
     visuallyHidden: () => `

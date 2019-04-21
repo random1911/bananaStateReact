@@ -17,7 +17,7 @@ export default {
       smallProperty: "erudito",
       position: { x: 1, y: 2 },
       prev: [{ x: 1, y: 1 }],
-      next: [{ x: 1, y: 3 }],
+      next: [{ x: 1, y: 3 }]
     },
     {
       id: 3,
@@ -71,7 +71,7 @@ export default {
       description: "",
       position: { x: 4, y: 2 },
       prev: [{ x: 4, y: 3 }],
-      next: [{ x: 4, y: 1 }],
+      next: [{ x: 4, y: 1 }]
     },
     {
       id: 8,

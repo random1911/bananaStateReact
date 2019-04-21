@@ -2,8 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { inject, observer } from "mobx-react";
 import { Wrapper } from "./GameInitStyled";
-import smallProperty from "../../data/smallProperty"
-import testMap from "../../data/testMap"
+import smallProperty from "../../data/smallProperty";
+import testMap from "../../data/testMap";
 
 /*
 id: types.number,
@@ -29,7 +29,7 @@ id: types.number,
 * */
 
 const GameInit = ({ store }) => {
-  const {startBalance} = store.rules;
+  const { startBalance } = store.rules;
   const createPlayer = (color, name) => {
     return {
       color,

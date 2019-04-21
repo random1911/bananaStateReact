@@ -60,7 +60,7 @@ export const TileChips = styled.div`
   right: 0;
   z-index: 3;
   padding: 5px;
-`
+`;
 export const Chip = styled.div`
   display: inline-flex;
   border-radius: 50%;

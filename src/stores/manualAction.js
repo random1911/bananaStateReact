@@ -50,7 +50,10 @@ const manualAction = types
       const property = self.store.findSmallProperty(self.reference);
       const player = self.store.activePlayer;
       if (!property.ownerId && player.balance >= property.price) {
-        player.looseMoney(property.price, ` ${t('log.buyingProperty', {name: property.name})}`);
+        player.looseMoney(
+          property.price,
+          ` ${t("log.buyingProperty", { name: property.name })}`
+        );
         property.setOwner(player.id);
       }
     }

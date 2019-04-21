@@ -1,5 +1,5 @@
 import { types, getRoot } from "mobx-state-tree";
-import manualAction from "./manualAction"
+import manualAction from "./manualAction";
 
 const event = types
   .model("Event", {
@@ -15,19 +15,20 @@ const event = types
   }))
   .actions(self => ({
     check() {
-      const player = self.store.activePlayer;
-      switch (self.type) {
+      const { type, value, text, store, manualAction } = self;
+      const player = store.activePlayer;
+      switch (type) {
         case "freeze":
-          player.freeze(self.value, self.text);
+          player.freeze(value, text);
           break;
         case "getMoney":
-          player.getMoney(self.value, self.text);
+          player.getMoney(value, text);
           break;
         case "lostMoney":
-          player.looseMoney(self.value, self.text);
+          player.looseMoney(value, text);
           break;
         case "manual":
-          self.store.setManualAction(self.manualAction);
+          store.setManualAction(manualAction);
           break;
         default:
           return;

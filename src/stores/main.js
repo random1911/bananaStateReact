@@ -20,7 +20,7 @@ const model = {
   playerMoving: false,
   log: types.optional(Log, { messages: [] }),
   rules: types.optional(rules, {}),
-  ui: types.optional(ui, {}),
+  ui: types.optional(ui, {})
 };
 
 const views = self => ({
@@ -78,7 +78,7 @@ const actions = self => ({
   },
   makeRoll() {
     const roll = self.getRollResult();
-    const message = t('log.rolled', {roll});
+    const message = t("log.rolled", { roll });
     self.log.addMessage(message);
     self.activePlayer.move(roll);
     self.setRollStatus(true);

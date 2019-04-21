@@ -31,4 +31,4 @@ const stats = types
     }
   }));
 
-export default stats
+export default stats;

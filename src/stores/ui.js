@@ -18,11 +18,11 @@ const ui = types
       self.modals = [...self.modals, { id }];
     },
     openModal(id) {
-      self.findModal(id).open()
+      self.findModal(id).open();
     },
     closeModal(id) {
-      self.findModal(id).close()
-    },
+      self.findModal(id).close();
+    }
   }));
 
 export default ui;
