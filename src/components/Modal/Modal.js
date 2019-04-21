@@ -30,13 +30,13 @@ class Modal extends Component {
 
   constructor(props) {
     super(props);
-    const { ui } = props.store;
-    ui.addModal(props.id);
+    const { store, id } = props;
+    store.ui.addModal(id);
   }
 
   componentDidMount() {
     const { isOpen, store, id } = this.props;
-    isOpen && store.ui.findModal(id).open();
+    isOpen && store.ui.openModal(id);
   }
   componentDidUpdate() {
     const { store, id, blocking } = this.props;
@@ -47,13 +47,17 @@ class Modal extends Component {
   }
 
   handleKeyDown = e => {
-    const escape = e.keyCode === 27;
-    escape && this.handleClose();
+    const { blocking, store } = this.props;
+    const { dropdownIsOpen } = store.ui;
+    if (e.key === "Escape" && !blocking && !dropdownIsOpen) {
+      this.handleClose();
+      e.stopPropagation();
+    }
   };
 
   handleClose = () => {
     const { store, id } = this.props;
-    store.ui.findModal(id).close();
+    store.ui.closeModal(id);
     document.removeEventListener("keydown", this.handleKeyDown);
   };
 

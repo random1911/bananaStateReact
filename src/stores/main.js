@@ -25,7 +25,7 @@ const model = {
 
 const views = self => ({
   get isServer() {
-    return typeof window === "undefined";
+    return typeof window === "undefined"; // not sure it will ever have ssr
   },
   get activePlayerColor() {
     return self.activePlayer && self.activePlayer.color;
