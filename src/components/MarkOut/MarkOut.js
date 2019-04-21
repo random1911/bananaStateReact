@@ -63,7 +63,7 @@ export const LineBreaker = ({ source, wrapper, lineWrapper }) => {
       return <Paragraph key={index}>{line}</Paragraph>;
     }
     if (Paragraph && typeof Paragraph === "string") {
-      return React.createElement(Paragraph, {}, line);
+      return React.createElement(Paragraph, {key: index}, line);
     }
     return (
       <Fragment key={index}>

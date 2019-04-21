@@ -55,7 +55,8 @@ const player = types
           count: self.frozenTurnsCount
         });
       if (self.isActiveNow) return t("playerInfo.makingTurn");
-      if (!self.isActiveNow) return t("playerInfo.waitingForTurn");
+      //if (!self.isActiveNow)
+      return t("playerInfo.waitingForTurn");
     }
   }))
   .actions(self => ({

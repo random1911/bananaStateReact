@@ -11,7 +11,6 @@ class Dropdown extends Component {
     selected: PropTypes.object,
     headerText: PropTypes.string,
     closeTimeout: PropTypes.number,
-    customHead: PropTypes.func,
     onSelect: PropTypes.func,
     items: PropTypes.array,
     headerWidth: PropTypes.string,
@@ -21,6 +20,9 @@ class Dropdown extends Component {
       PropTypes.object
     ]),
     type: PropTypes.oneOf(["select", "menu"]).isRequired
+  };
+  static defaultProps = {
+    closeTimeout: 100
   };
   constructor(props) {
     super(props);
@@ -58,7 +60,6 @@ class Dropdown extends Component {
   render() {
     const {
       useTranslate,
-      customHead,
       items,
       onSelect,
       selected,
@@ -67,31 +68,15 @@ class Dropdown extends Component {
       headerText
     } = this.props;
     const { isOpen, dropdownPosition } = this.state;
-    const CustomHeader = customHead;
     const displayValue = headerText || selected.name;
     return (
       <Fragment>
-        {CustomHeader ? (
-          <CustomHeader
-            innerRef={this.headElement}
-            onClick={this.open}
-            open={isOpen}
-            width={headerWidth}
-          >
+        <Head ref={this.headElement} onClick={this.open} width={headerWidth}>
+          <CurrentValue>
             {useTranslate ? <Translate id={displayValue} /> : displayValue}
-          </CustomHeader>
-        ) : (
-          <Head
-            innerRef={this.headElement}
-            onClick={this.open}
-            width={headerWidth}
-          >
-            <CurrentValue>
-              {useTranslate ? <Translate id={displayValue} /> : displayValue}
-            </CurrentValue>
-            <Arrow open={isOpen} />
-          </Head>
-        )}
+          </CurrentValue>
+          <Arrow open={isOpen} />
+        </Head>
         {isOpen && (
           <DropdownDrop closeCallback={this.close} params={dropdownPosition}>
             {type === "select" && (
@@ -109,9 +94,5 @@ class Dropdown extends Component {
     );
   }
 }
-
-Dropdown.defaultProps = {
-  closeTimeout: 100
-};
 
 export default Dropdown;

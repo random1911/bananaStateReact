@@ -55,7 +55,7 @@ class DropdownDrop extends Component {
     const drop = (
       <FocusLock>
         <AutoFocusInside>
-          <DropdownWrapper innerRef={this.node} style={this.state.style}>
+          <DropdownWrapper ref={this.node} style={this.state.style}>
             {children}
           </DropdownWrapper>
         </AutoFocusInside>
